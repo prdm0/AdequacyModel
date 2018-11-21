@@ -12,6 +12,11 @@ The main application concerns to a new robust optimization package with two majo
 ![fig_logo](https://raw.githubusercontent.com/PedroRafaelDinizMarinho/tempfiles/master/logo_gimp.png)
 
 
+### Installation
+
+`install.packages("AdequacyModel")` <br><br><br>
+
+
 **A package manual may be found at**: https://cran.r-project.org/web/packages/AdequacyModel/AdequacyModel.pdf. The versions of the **AdequacyModel** package are separated by tags.
 
 **CRAN Project**: https://CRAN.R-project.org/package=hcci.
