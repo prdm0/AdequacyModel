@@ -19,4 +19,4 @@ The main application concerns to a new robust optimization package with two majo
 
 **A package manual may be found at**: https://cran.r-project.org/web/packages/AdequacyModel/AdequacyModel.pdf. The versions of the **AdequacyModel** package are separated by tags.
 
-**CRAN Project**: https://CRAN.R-project.org/package=hcci.
+**CRAN Project**:  https://CRAN.R-project.org/package=AdequacyModel.
