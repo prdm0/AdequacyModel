@@ -83,7 +83,7 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "PSO",
       
     }
     
-    if((FALSE %in% (method != c("PSO", "L", "BFGS", "B",
+    if((FALSE %in% (method != c("PSO", "L", "L-BFGS-B", "BFGS", "B",
                                 "Nelder-Mead", "P", "N", "SANN", "S", "CG", "C"))) == FALSE){
       
       stop("Valid options are: PSO or P, BFGS or B, L-BFGS-B or L, Nelder-Mead or N, SANN or S, CG or C.")
