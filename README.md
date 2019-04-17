@@ -16,7 +16,15 @@ The main application concerns to a new robust optimization package with two majo
 
 ### Installation
 
-`install.packages("AdequacyModel")` <br><br><br>
+```
+install.packages("AdequacyModel")
+```
+or 
+
+```
+devtools::install_github(repo = "prdm0/AdequacyModel", ref = "v2.0.0")
+``` 
+<br><br><br>
 
 
 **A package manual may be found at**: https://cran.r-project.org/web/packages/AdequacyModel/AdequacyModel.pdf. The versions of the **AdequacyModel** package are separated by tags.
