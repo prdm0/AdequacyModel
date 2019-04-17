@@ -7,7 +7,6 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "BFGS",
   if(class(cdf) != "function") stop("The argument cdf must be a function. See the example in the documentation!")
   if(missingArg(data) == TRUE) stop("Database missing!")
   if(TRUE %in% is.nan(data) == TRUE) warning("The data have missing information!")
-  if(length(domain) != 2) stop("The domain must have two arguments!")
   
   if(is.null(mle) == TRUE){
     if(missingArg(starts) == TRUE) stop("The initial shots were not informed!")
