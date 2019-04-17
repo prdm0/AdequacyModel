@@ -1,4 +1,4 @@
-goodness.fit <- function(pdf, cdf, starts, data, method = "PSO",
+goodness.fit <- function(pdf, cdf, starts, data, method = "BFGS",
                          mle = NULL, ...){
    
   if(missingArg(cdf) == TRUE) stop("Unknown cumulative distribution function. The function needs to be informed.")
