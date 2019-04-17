@@ -43,44 +43,32 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "PSO",
     }
     
     if(method == "PSO" || method == "P"){
-      
       result = pso(func = likelihood, data = data, ...)
-      
     }
     
     if(method == "Nelder-Mead" || method == "N"){
-      
       result = optim(par = starts, fn = likelihood, x = data,
                      method = "Nelder-Mead", hessian = TRUE)
-      
     }
     
     if(method == "CG" || method == "C"){
-      
       result = optim(par = starts, fn = likelihood, x = data,
                      method = "CG", hessian = TRUE)
-      
     }  
     
     if(method == "SANN" || method == "S"){
-      
       result = optim(par = starts, fn = likelihood, x = data,
                      method = "SANN", hessian = TRUE)
-      
     }  
     
     if(method == "BFGS" || method == "B"){
-      
       result = optim(par = starts, fn = likelihood, x = data,
                      method = "BFGS", hessian = TRUE)
-      
     }
     
     if(method == "L-BFGS-B" || method == "L"){
-      
       result = optim(par = starts, fn = likelihood, x = data,
                      method = "L-BFGS-B", hessian = TRUE, ...)
-      
     }
     
     if((FALSE %in% (method != c("PSO", "L", "L-BFGS-B", "BFGS", "B",
@@ -105,8 +93,10 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "PSO",
     A_temp <- vector()
     
     for(i in 1:n){
-      W_temp[i] = (u[i] - (2*i - 1)/(2*n))^2
-      A_temp[i] = (2*i - 1) * log(u[i]) + (2*n+1 - 2*i) * log(1 - u[i])
+      
+      W_temp[i] = (u[i] - (2 * i - 1)/(2 * n))^2
+      A_temp[i] = (2 * i - 1) * log(u[i]) + (2 * n + 1 - 2 * i) * log(1 - u[i])
+      
     }
     
     A_2 = -n - mean(A_temp)
@@ -130,15 +120,12 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "PSO",
     
     
     if(method == "PSO" || method == "P"){
-      
       result = (list("W" = W_star,"A" = A_star, "KS" = KS,
                      "mle" = parameters, "AIC" = AIC , "CAIC " = AICc,
                      "BIC" = BIC, "HQIC" = HQIC, "Value" = result$f[length(result$f)]))
       class(result) <- "list" 
       return(result)
-      
     }else{
-      
       result = (list("W" = W_star, "A" = A_star, "KS" = KS,
                      "mle" = parameters, "AIC" = AIC , "CAIC " = AICc,
                      "BIC" = BIC, "HQIC" = HQIC, "Erro" = sqrt(diag(solve(hessiana))),
@@ -146,12 +133,10 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "PSO",
       
       class(result) <- "list" 
       return(result)
-      
     }
   }
   
   if(class(mle) == "numeric"){
-    
     likelihood = function(par,x){
       -sum(log(pdf(par, x)))
     }
@@ -162,16 +147,14 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "PSO",
     n = length(data) # Tamanho da amostra.
     y = qnorm(v) # Inversa da acumulada da normal.
     y[which(y == Inf)] = 10
-    u = pnorm((y-mean(y))/sqrt(var(y)))
+    u = pnorm((y - mean(y))/sqrt(var(y)))
     
     W_temp <- vector()
     A_temp <- vector()
     
     for(i in 1:n){
-      
       W_temp[i] = (u[i] - (2 * i - 1)/(2 * n))^2
-      A_temp[i] = (2 * i - 1) * log(u[i]) + (2 * n+1-2 * i)*log(1 - u[i])
-      
+      A_temp[i] = (2 * i - 1) * log(u[i]) + (2 * n + 1 - 2 * i) * log(1 - u[i])
     }
     
     A_2 = -n - mean(A_temp)

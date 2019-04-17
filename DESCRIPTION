@@ -18,4 +18,4 @@ Description: The main application concerns to a new robust optimization package 
 URL: (GitHub Project) https://github.com/prdm0/AdequacyModel
 License: GPL-3
 Depends: R (>= 3.0.0)
-Imports: methods, stats, graphics
+Imports: methods, stats, graphics, MASS
