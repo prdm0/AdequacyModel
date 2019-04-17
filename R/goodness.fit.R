@@ -127,7 +127,7 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "BFGS",
       return(result)
     }else{
       if(!as.logical(det(A))){
-        error_vector <- sqrt(diag(ginv(hessiana))) # pseudo inverse.
+        error_vector <- sqrt(diag(ginv(hessiana))) # pseudo inverse (hessian matrix).
       }else{
         error_vector <- sqrt(diag(solve(hessiana)))
       }
