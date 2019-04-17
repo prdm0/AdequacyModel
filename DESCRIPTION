@@ -10,7 +10,7 @@ Authors@R: c(person(given = "Pedro Rafael", family = "Diniz Marinho",
         family = "Barros Dias", role = c("ctb"), email =
         ""))
 Author: Pedro Rafael Diniz Marinho [aut, cre],
- Marcelo Bourguignon [ctb],
+ Marcelo Bourguignon [ctb] (earlier version by),
  Cicero Rafael Barros Dias [ctb] (earlier version by)
 Version: 2.5-0
 Maintainer: Pedro Rafael Diniz Marinho <pedro.rafael.marinho@gmail.com>
