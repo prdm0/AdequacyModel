@@ -1,13 +1,12 @@
-goodness.fit <-
-function(pdf, cdf, starts, data, method = "PSO", domain = c(0,Inf),
-                         mle = NULL,...){
-  
+goodness.fit <- function(pdf, cdf, starts, data, method = "PSO", domain = c(0,Inf),
+                         mle = NULL, ...){
+   
   if(missingArg(cdf) == TRUE) stop("Unknown cumulative distribution function. The function needs to be informed.")
   if(missingArg(pdf) == TRUE) stop("Unknown probability density function. The function needs to be informed.")
   if(class(pdf) != "function") stop("The argument pdf must be a function. See the example in the documentation!")
   if(class(cdf) != "function") stop("The argument cdf must be a function. See the example in the documentation!")
   if(missingArg(data) == TRUE) stop("Database missing!")
-  if(TRUE%in%is.nan(data) == TRUE) warning("The data have missing information!")
+  if(TRUE %in% is.nan(data) == TRUE) warning("The data have missing information!")
   if(length(domain) != 2) stop("The domain must have two arguments!")
   
   if(is.null(mle) == TRUE){
@@ -18,8 +17,8 @@ function(pdf, cdf, starts, data, method = "PSO", domain = c(0,Inf),
   
   # Verifying properties of cumulative distribution function.
   
-  if(cdf(par=starts, x = domain[2]) != 1) warning("The cdf function informed is not a cumulative distribution function! The function no takes value 1 in Inf.")
-  if(cdf(par=starts, x = domain[1]) != 0) warning("Check if the cumulative distribution informed is actually a distribution function.")
+  if(cdf(par = starts, x = domain[2]) != 1) warning("The cdf function informed is not a cumulative distribution function! The function no takes value 1 in Inf.")
+  if(cdf(par = starts, x = domain[1]) != 0) warning("Check if the cumulative distribution informed is actually a distribution function.")
   
   myintegrate = function(...) tryCatch(integrate(...), error = function(e) NA)
   
@@ -88,20 +87,20 @@ function(pdf, cdf, starts, data, method = "PSO", domain = c(0,Inf),
     
     for(i in 1:n){
       W_temp[i] = (u[i] - (2*i-1)/(2*n))^2
-      A_temp[i] = (2*i-1)*log(u[i]) + (2*n+1-2*i)*log(1-u[i])
+      A_temp[i] = (2*i-1) * log(u[i]) + (2*n+1-2*i) * log(1-u[i])
     }
     
     A_2 = -n - mean(A_temp)
     W_2 = sum(W_temp) + 1/(12*n)
-    W_star = W_2*(1+0.5/n)
-    A_star = A_2*(1+0.75/n + 2.25/n^2)
+    W_star = W_2 * (1 + 0.5/n)
+    A_star = A_2 * (1 + 0.75/n + 2.25/n^2)
     
     p = length(parameters)
-    log.likelihood = -1*likelihood(parameters, data) 
-    AICc = -2*log.likelihood + 2*p + 2*(p*(p+1))/(n-p-1)
-    AIC  = -2*log.likelihood + 2*p
-    BIC  = -2*log.likelihood + p*log(n)
-    HQIC = -2*log.likelihood + 2*log(log(n))*p
+    log.likelihood = -1 * likelihood(parameters, data) 
+    AICc = -2 * log.likelihood + 2*p + 2*(p*(p+1))/(n-p-1)
+    AIC  = -2 * log.likelihood + 2*p
+    BIC  = -2 * log.likelihood + p*log(n)
+    HQIC = -2 * log.likelihood + 2*log(log(n))*p
     ks.testg = function(...) tryCatch(ks.test(...),
                                       warning = function(war) NA)
     KS = ks.test(x = data, y = "cdf", par = as.vector(parameters))
@@ -109,13 +108,13 @@ function(pdf, cdf, starts, data, method = "PSO", domain = c(0,Inf),
     
     if(method == "PSO" || method == "P"){
       result = (list("W" = W_star,"A" = A_star, "KS" = KS,
-                     "mle" = parameters, "AIC" = AIC ,"CAIC " = AICc,
+                     "mle" = parameters, "AIC" = AIC , "CAIC " = AICc,
                      "BIC" = BIC, "HQIC" = HQIC, "Value" = result$f[length(result$f)]))
       class(result) <- "list" 
       return(result)
     }else{
-      result = (list("W" = W_star,"A" = A_star, "KS" = KS,
-                     "mle" = parameters, "AIC" = AIC ,"CAIC " = AICc,
+      result = (list("W" = W_star, "A" = A_star, "KS" = KS,
+                     "mle" = parameters, "AIC" = AIC , "CAIC " = AICc,
                      "BIC" = BIC, "HQIC" = HQIC, "Erro" = sqrt(diag(solve(hessiana))),
                      "Value" = result$value, "Convergence" = result$convergence))
       class(result) <- "list" 
@@ -123,7 +122,7 @@ function(pdf, cdf, starts, data, method = "PSO", domain = c(0,Inf),
     }
   }
   
-  if(class(mle)=="numeric"){
+  if(class(mle) == "numeric"){
     
     likelihood = function(par,x){
       -sum(log(pdf(par, x)))
@@ -147,15 +146,15 @@ function(pdf, cdf, starts, data, method = "PSO", domain = c(0,Inf),
     
     A_2 = -n - mean(A_temp)
     W_2 = sum(W_temp) + 1/(12*n)
-    W_star = W_2*(1+0.5/n)
-    A_star = A_2*(1+0.75/n + 2.25/n^2)
+    W_star = W_2 * (1+0.5/n)
+    A_star = A_2 * (1+0.75/n + 2.25/n^2)
     
     p = length(parameters)
-    log.likelihood = -1*likelihood(parameters, data) 
-    AICc = -2*log.likelihood + 2*p + 2*(p*(p+1))/(n-p-1)
-    AIC  = -2*log.likelihood + 2*p
-    BIC  = -2*log.likelihood + p*log(n)
-    HQIC = -2*log.likelihood + 2*log(log(n))*p
+    log.likelihood = -1 * likelihood(parameters, data) 
+    AICc = -2 * log.likelihood + 2*p + 2*(p*(p+1))/(n-p-1)
+    AIC  = -2 * log.likelihood + 2*p
+    BIC  = -2 * log.likelihood + p*log(n)
+    HQIC = -2 * log.likelihood + 2*log(log(n))*p
     ks.testg = function(...) tryCatch(ks.test(...),
                                       warning = function(war) NA)
     KS = ks.test(x = data, y = "cdf", par = as.vector(parameters))
