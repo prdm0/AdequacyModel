@@ -126,9 +126,15 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "BFGS",
       class(result) <- "list" 
       return(result)
     }else{
+      if(!as.logical(det(A))){
+        error_vector <- sqrt(diag(ginv(hessiana))) # pseudo inverse.
+      }else{
+        error_vector <- sqrt(diag(solve(hessiana)))
+      }
+      
       result = (list("W" = W_star, "A" = A_star, "KS" = KS,
                      "mle" = parameters, "AIC" = AIC , "CAIC " = AICc,
-                     "BIC" = BIC, "HQIC" = HQIC, "Erro" = sqrt(diag(solve(hessiana))),
+                     "BIC" = BIC, "HQIC" = HQIC, "Erro" = error_vector,
                      "Value" = result$value, "Convergence" = result$convergence))
       
       class(result) <- "list" 
