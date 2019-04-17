@@ -192,7 +192,7 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "PSO",
     
     KS = ks.test(x = data, y = "cdf", par = as.vector(parameters))
     
-    result = (list("W" = W_star,"A" = A_star, "KS" = KS, "AIC" = AIC,
+    result = (list("W" = W_star, "A" = A_star, "KS" = KS, "AIC" = AIC,
                    "CAIC" = AICc, "BIC" = BIC, "HQIC" = HQIC))
     
     class(result) <- "list" 
