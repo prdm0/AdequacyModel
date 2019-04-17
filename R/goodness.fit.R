@@ -38,7 +38,7 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "BFGS",
   # }
   
   if(is.null(mle) == TRUE){    
-    likelihood = function(par, x){
+    likelihood <- function(par, x){
       -sum(log(pdf(par, x)))
     }
     
@@ -137,7 +137,7 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "BFGS",
   }
   
   if(class(mle) == "numeric"){
-    likelihood = function(par,x){
+    likelihood <- function(par,x){
       -sum(log(pdf(par, x)))
     }
     
