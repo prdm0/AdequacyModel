@@ -105,12 +105,12 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "PSO",
     A_temp <- vector()
     
     for(i in 1:n){
-      W_temp[i] = (u[i] - (2*i-1)/(2*n))^2
-      A_temp[i] = (2*i-1) * log(u[i]) + (2*n+1-2*i) * log(1-u[i])
+      W_temp[i] = (u[i] - (2*i - 1)/(2*n))^2
+      A_temp[i] = (2*i - 1) * log(u[i]) + (2*n+1 - 2*i) * log(1 - u[i])
     }
     
     A_2 = -n - mean(A_temp)
-    W_2 = sum(W_temp) + 1/(12*n)
+    W_2 = sum(W_temp) + 1/(12 * n)
     W_star = W_2 * (1 + 0.5/n)
     A_star = A_2 * (1 + 0.75/n + 2.25/n^2)
     
@@ -118,7 +118,7 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "PSO",
     
     log.likelihood = -1 * likelihood(parameters, data) 
     
-    AICc = -2 * log.likelihood + 2 * p + 2 * (p*(p+1))/(n-p-1)
+    AICc = -2 * log.likelihood + 2 * p + 2 * (p * (p + 1))/(n - p - 1)
     AIC  = -2 * log.likelihood + 2 * p
     BIC  = -2 * log.likelihood + p * log(n)
     HQIC = -2 * log.likelihood + 2 * log(log(n)) * p
@@ -169,21 +169,21 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "PSO",
     
     for(i in 1:n){
       
-      W_temp[i] = (u[i] - (2*i-1)/(2*n))^2
-      A_temp[i] = (2*i-1)*log(u[i]) + (2*n+1-2*i)*log(1-u[i])
+      W_temp[i] = (u[i] - (2 * i - 1)/(2 * n))^2
+      A_temp[i] = (2 * i - 1) * log(u[i]) + (2 * n+1-2 * i)*log(1 - u[i])
       
     }
     
     A_2 = -n - mean(A_temp)
-    W_2 = sum(W_temp) + 1/(12*n)
-    W_star = W_2 * (1+0.5/n)
-    A_star = A_2 * (1+0.75/n + 2.25/n^2)
+    W_2 = sum(W_temp) + 1/(12 * n)
+    W_star = W_2 * (1 + 0.5/n)
+    A_star = A_2 * (1 + 0.75/n + 2.25/n^2)
     
     p = length(parameters)
     
     log.likelihood = -1 * likelihood(parameters, data) 
     
-    AICc = -2 * log.likelihood + 2 * p + 2 * (p*(p+1))/(n-p-1)
+    AICc = -2 * log.likelihood + 2 * p + 2 * (p * (p + 1))/(n - p - 1)
     AIC  = -2 * log.likelihood + 2 * p
     BIC  = -2 * log.likelihood + p * log(n)
     HQIC = -2 * log.likelihood + 2 * log(log(n)) * p
