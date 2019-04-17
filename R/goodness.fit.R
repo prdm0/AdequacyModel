@@ -7,7 +7,6 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "BFGS",
   if(class(cdf) != "function") stop("The argument cdf must be a function. See the example in the documentation!")
   if(missingArg(data) == TRUE) stop("Database missing!")
   if(TRUE %in% is.nan(data) == TRUE) warning("The data have missing information!")
-  if(length(domain) != 2) stop("The domain must have two arguments!")
   
   if(is.null(mle) == TRUE){
     if(missingArg(starts) == TRUE) stop("The initial shots were not informed!")
@@ -38,7 +37,7 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "BFGS",
   # }
   
   if(is.null(mle) == TRUE){    
-    likelihood = function(par, x){
+    likelihood <- function(par, x){
       -sum(log(pdf(par, x)))
     }
     
@@ -126,9 +125,15 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "BFGS",
       class(result) <- "list" 
       return(result)
     }else{
+      if(!as.logical(det(hessiana))){
+        error_vector <- sqrt(diag(ginv(hessiana))) # pseudo inverse (hessian matrix).
+      }else{
+        error_vector <- sqrt(diag(solve(hessiana)))
+      }
+      
       result = (list("W" = W_star, "A" = A_star, "KS" = KS,
                      "mle" = parameters, "AIC" = AIC , "CAIC " = AICc,
-                     "BIC" = BIC, "HQIC" = HQIC, "Erro" = sqrt(diag(solve(hessiana))),
+                     "BIC" = BIC, "HQIC" = HQIC, "Erro" = error_vector,
                      "Value" = result$value, "Convergence" = result$convergence))
       
       class(result) <- "list" 
@@ -137,7 +142,7 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "BFGS",
   }
   
   if(class(mle) == "numeric"){
-    likelihood = function(par,x){
+    likelihood <- function(par,x){
       -sum(log(pdf(par, x)))
     }
     

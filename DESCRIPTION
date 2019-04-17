@@ -10,12 +10,13 @@ Authors@R: c(person(given = "Pedro Rafael", family = "Diniz Marinho",
         family = "Barros Dias", role = c("ctb"), email =
         ""))
 Author: Pedro Rafael Diniz Marinho [aut, cre],
- Marcelo Bourguignon [ctb],
+ Marcelo Bourguignon [ctb] (earlier version by),
  Cicero Rafael Barros Dias [ctb] (earlier version by)
 Version: 2.5-0
 Maintainer: Pedro Rafael Diniz Marinho <pedro.rafael.marinho@gmail.com>
 Description: The main application concerns to a new robust optimization package with two major contributions. The first contribution refers to the assessment of the adequacy of probabilistic models through a combination of several statistics, which measure the relative quality of statistical models for a given data set. The second one provides a general purpose optimization method based on meta-heuristics functions for maximizing or minimizing an arbitrary objective function.
 URL: (GitHub Project) https://github.com/prdm0/AdequacyModel
+BugReports: https://github.com/prdm0/AdequacyModel/issues
 License: GPL-3
 Depends: R (>= 3.0.0)
 Imports: methods, stats, graphics, MASS
