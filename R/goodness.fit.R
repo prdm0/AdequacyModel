@@ -171,7 +171,8 @@ goodness.fit <- function(pdf, cdf, starts, data, method = "BFGS",
     
     log.likelihood = -1 * likelihood(parameters, data) 
     
-    AICc = -2 * log.likelihood + 2 * p + 2 * (p * (p + 1))/(n - p - 1)
+    # https://academic.oup.com/biomet/article-abstract/76/2/297/265326?redirectedFrom=fulltext
+    AICc = -2 * log.likelihood + (2 * (p + 1)*(p + 2))/(n - p - 2)
     AIC  = -2 * log.likelihood + 2 * p
     BIC  = -2 * log.likelihood + p * log(n)
     HQIC = -2 * log.likelihood + 2 * log(log(n)) * p
