@@ -15,6 +15,9 @@ The main application concerns to a new robust optimization package with two majo
 <img src="https://raw.githubusercontent.com/prdm0/tempfiles/master/logo_gimp.png" height="420" width="700">
 </br>           
 </p>
+</br>
+</br>
+**See package website**: https://prdm0.github.io/AdequacyModel/.
 
 
 ### Installation
