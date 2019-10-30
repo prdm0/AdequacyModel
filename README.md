@@ -17,6 +17,7 @@ The main application concerns to a new robust optimization package with two majo
 </p>
 </br>
 </br>
+
 **See package website**: https://prdm0.github.io/AdequacyModel/.
 
 
